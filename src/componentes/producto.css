@@ -1,0 +1,14 @@
+.body{
+    background-color: #ffffff;
+}
+
+.cardfoto{
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+}
+.logo{
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+}
