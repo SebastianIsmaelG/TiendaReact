@@ -12,3 +12,50 @@
     margin-left: 8px;
     margin-right: 8px;
 }
+.img_descripcion{
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+}
+
+.buttondiv{
+    text-align: center;
+}
+.titulo_articulo{
+    height: 100px;
+    max-height: 80px;
+}
+.nombre_tienda{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 6mm;
+    font-weight: 400;
+    
+}
+.font_articulo{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 3.6mm;
+    font-weight: bolder;
+    color: #666666;
+}
+
+.btnficha{
+    color: blanchedalmond;
+    border-radius: 3mm;
+    padding: 10px;
+    background-color: chocolate;
+	border: none;
+	font-family: 'Lato';
+	font-size: 3.5mm;
+    cursor: pointer;
+    font-family: 'Noto Sans', sans-serif;
+    
+}
+.btnficha:hover{
+    outline: none;
+    border-radius: 3mm;
+    background-color: rgb(233, 128, 53);
+}
+.btnficha:focus{
+    outline: none;
+    border-radius: 3mm;
+}

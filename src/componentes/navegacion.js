@@ -5,7 +5,7 @@ class Navegacion extends React.Component{
         return(
             <Navbar color="light" light expand="md">
                 <img className="logo" src="https://i.ibb.co/WHqZFx1/store-icon-icons-com-54371.png" alt="log"></img>
-                <NavbarBrand href="/">{this.props.NombreTienda}</NavbarBrand>
+                <NavbarBrand href="/"><span className="nombre_tienda">{this.props.NombreTienda}</span></NavbarBrand>
                     <NavbarToggler/>
                     <Collapse navbar>
                         

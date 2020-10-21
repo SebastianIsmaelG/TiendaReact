@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal,Button,Container,ModalBody,CardGroup,Col,Row} from 'reactstrap'
+import {Modal,Button,Container,ModalBody,Col,Row,Nav,} from 'reactstrap'
+
 
 class FichaProducto extends React.Component{
     constructor(props){
@@ -19,18 +20,59 @@ class FichaProducto extends React.Component{
     render(){
         return(
             <Container>
-                <Button onClick={this.toggle}>Ver ficha</Button>
+                <div className="buttondiv">
+                 <button className="btnficha" onClick={this.toggle}>Ver Mas</button>
+                </div>
                 <Modal isOpen={this.state.modal}>
                     <ModalBody>
                         <Container>
                             <Row>
                                 <Col lg="12">
-                                    <h6>{this.props.props.titulo}</h6>
+                                    <Button close onClick={this.toggle} />
+                                </Col>
+                                <Col lg="12">
+                                    <Container>
+                                     <Row>
+                                         <Col lg="12">
+                                           <small className="text-muted">COD: 0000</small> 
+                                         </Col>
+                                         <Col lg="12">
+                                            <span>{this.props.props.marca}</span> | <span>{this.props.props.titulo}</span>
+                                         </Col>   
+                                     </Row>
+                                    </Container>
+                                </Col>
+                            </Row>
+                            <br></br>
+                            <Row>
+                                <Col lg="6">
+                                    <Container>
+                                        <img alt="imagen-articulo" className="img_descripcion" src={this.props.props.imagen}></img>
+                                    </Container>
+                                </Col>
+                                <Col lg="6">
+                                <Container>
+                                    <Row>
+                                        <Col lg="12">
+                                            <span>Precio</span>
+                                        </Col>
+                                        <Col lg="12">
+                                            <strong className="text-danger">$ {this.props.props.precio}</strong>
+                                        </Col>
+                                        <Col lg="12">
+                                            <button className="btnficha" onClick={this.toggle}>Agregar al Carro</button>
+                                            <img alt="" src={require("../imagenes/medios_pago2016.png")} ></img>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                                </Col>
+                                <Col>
+                                <Container>
+                                     <small>{this.props.props.descripcion}</small>
+                                    </Container>
                                 </Col>
                             </Row>
                         </Container>
-                        <Button close onClick={this.toggle} />
-                        <Button onClick={this.toggle}>Agregar al carrito</Button>
                     </ModalBody>
                 </Modal>
             </Container>

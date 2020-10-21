@@ -19,12 +19,21 @@ class Producto extends React.Component{
             <Col lg="3" md="6" sm="6" xs="6">
                 <div>
                     <Card>
-                        <CardImg className="cardfoto" src={this.props.imagen}/>
+                        <Container className="text-center titulo_articulo">
+                            <small className="text-muted text">{this.props.marca}</small>
+                            <CardTitle className="font_articulo">{this.props.titulo}</CardTitle>
+                        </Container>
+                        <Container>
+                            <CardImg className="cardfoto" src={this.props.imagen}/>
+                        </Container>
                         <CardBody>
-                            <CardTitle>{this.props.titulo}</CardTitle>
-                            <CardSubtitle><span>Valor:</span>{this.props.precio}</CardSubtitle>
-                            <CardText>{this.props.descripcion}</CardText>
-                            <FichaProducto props={this.props}/>
+                            <div className="my-2 mx-2 text-center">
+                                <CardSubtitle><span>Precio Oferta</span></CardSubtitle>
+                                <CardSubtitle className="text-danger"><strong>$ {this.props.precio}</strong></CardSubtitle>
+                            </div>
+                            <div className="my-2 mx-2">
+                                <FichaProducto props={this.props}/>
+                            </div>
                         </CardBody>
                     </Card>
                 </div>
