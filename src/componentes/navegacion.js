@@ -1,5 +1,7 @@
 import React from 'react';
-import {Navbar,NavbarBrand,Nav,NavItem,NavLink,Img,Collapse,NavbarToggler} from 'reactstrap'
+import {Navbar,NavbarBrand,Nav,NavItem,NavLink,Collapse,NavbarToggler} from 'reactstrap';
+import Carro from './carro';
+import './producto.css';
 class Navegacion extends React.Component{
     render(){
         return(
@@ -11,13 +13,16 @@ class Navegacion extends React.Component{
                         
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                            <NavLink href="/components/">Inicio</NavLink>
+                                <NavLink className="nav_link" href="/components/">Inicio</NavLink>
                             </NavItem>
                             <NavItem>
-                            <NavLink href="/components/">Productos</NavLink>
+                                <NavLink className="nav_link" href="/components/">Productos</NavLink>
                             </NavItem>
                             <NavItem>
-                            <NavLink href="/">Contacto</NavLink>
+                                <NavLink className="nav_link" href="/">Contacto</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <Carro/>
                             </NavItem>
                         </Nav>
                        

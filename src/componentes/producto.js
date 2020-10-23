@@ -1,7 +1,6 @@
 import React from 'react';
 import{
     Container,
-    CardText,
     CardSubtitle,
     CardTitle,
     Card,
@@ -16,7 +15,7 @@ class Producto extends React.Component{
 
     render(){
         return(
-            <Col lg="3" md="6" sm="6" xs="6">
+            <Col lg="3" md="6" sm="6" xs="12">
                 <div>
                     <Card>
                         <Container className="text-center titulo_articulo">
@@ -37,6 +36,7 @@ class Producto extends React.Component{
                         </CardBody>
                     </Card>
                 </div>
+                <br></br>
             </Col>
         );
     }
