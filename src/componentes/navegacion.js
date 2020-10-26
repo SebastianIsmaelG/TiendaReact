@@ -10,7 +10,6 @@ class Navegacion extends React.Component{
                 <NavbarBrand href="/"><span className="nombre_tienda">{this.props.NombreTienda}</span></NavbarBrand>
                     <NavbarToggler/>
                     <Collapse navbar>
-                        
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <NavLink className="nav_link" href="/components/">Inicio</NavLink>
@@ -25,9 +24,9 @@ class Navegacion extends React.Component{
                                 <Carro/>
                             </NavItem>
                         </Nav>
-                       
                      </Collapse>
             </Navbar>
+            
         );
     }
 }

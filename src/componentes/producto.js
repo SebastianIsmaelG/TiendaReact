@@ -28,7 +28,7 @@ class Producto extends React.Component{
                         <CardBody>
                             <div className="my-2 mx-2 text-center">
                                 <CardSubtitle><span>Precio Oferta</span></CardSubtitle>
-                                <CardSubtitle className="text-danger"><strong>$ {this.props.precio}</strong></CardSubtitle>
+                                <CardSubtitle className="text-danger"><strong>$ {new Intl.NumberFormat().format((this.props.precio))}</strong></CardSubtitle>
                             </div>
                             <div className="my-2 mx-2">
                                 <FichaProducto props={this.props}/>

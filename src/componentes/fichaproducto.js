@@ -5,22 +5,26 @@ import {listaCarrito} from './listacarro.json';
 
 
 
+
 class FichaProducto extends React.Component{
     constructor(props){
         super();
         this.state={
             modal:false,
-            listaCarrito
+            listaCarrito,
+            //declarancion del stock
+            stock: props.props.stock 
         };
 
         this.toggle = this.toggle.bind(this);
         this.agregarCarrito = this.agregarCarrito.bind(this);
     }
+    
     toggle(){
         this.setState(prevState=>({
             modal: !prevState.modal
         }));
-        console.log(this.props);
+        
     }
     agregarCarrito(){
         listaCarrito.push({
@@ -28,8 +32,25 @@ class FichaProducto extends React.Component{
             "precio": this.props.props.precio
         });
         this.setState(prevState=>({
-            modal: !prevState.modal
+            modal: !prevState.modal,
+            
         }));
+
+        if (this.state.stock !== 0 ){
+            this.setState(prevState =>({
+                //resto del stock
+                 stock: parseInt(prevState.stock) - 1
+            }));
+        }else{
+            alert("Stock Agotado");
+        }
+
+        const badgecarro = document.getElementById("badge1")
+        badgecarro.innerText = listaCarrito.length;
+        
+        localStorage.setItem( "carrito", JSON.stringify(listaCarrito));
+        //Objeto console.log(listaCarrito);
+      
     }
     render(){
         
@@ -68,13 +89,13 @@ class FichaProducto extends React.Component{
                                         <Row>
                                             <Col lg="12" md="12" sm="6" xs="6">
                                                 <div className="text-center px-2 py-1 m-1"><span>Precio</span></div>
-                                                <div className="text-center px-2 py-1"><strong className="text-danger h5">$ {this.props.props.precio}</strong></div>
+                                                <div className="text-center px-2 py-1"><strong className="text-danger h5">$ {new Intl.NumberFormat().format((this.props.props.precio))}</strong></div>
                                             </Col>
                                             <Col lg="12" md="12" sm="6" xs="6">
                                                 <div className="p-1 m-1 text-center">
                                                     <span className="my-1">Cantidad: </span> 
-                                                    <select className="my-1" id="id_cantidad_producto">
-                                                        <option selected value="1">1</option>
+                                                    <select className="my-1" id="id_cantidad_producto" disabled>
+                                                        <option  value="1" defaultValue="1">1</option>
                                                         <option  value="2">2</option>
                                                         <option  value="3">3</option>
                                                         <option  value="4">4</option>
@@ -116,7 +137,7 @@ class FichaProducto extends React.Component{
                                     <div className="p-1 m-1 text-right"><img alt="" src={require("../imagenes/medios_pago2016.png")} ></img></div>
                                 </Col>
                                 <Col lg="6" md="6" sm="6" xs="6">
-                                        <div className="m-2 text-center"><small>Disponibles: {this.props.props.stock} uds.</small></div>
+                                    <div className="m-2 text-center"><small>Disponibles:{this.state.stock} Uds.</small></div>
                                 </Col>
                                 <Col>
                                     <Container>

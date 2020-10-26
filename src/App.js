@@ -1,8 +1,10 @@
 import React from 'react';
 import {Container,Row} from 'reactstrap';
-import Navegacion from './componentes/navegacion.js'
+import Navegacion from './componentes/navegacion.js';
 import Producto from './componentes/producto.js';
 import {listaProductos} from './componentes/listaproducto.json';
+import Footer from './componentes/footer.js';
+
 
 
 class App extends React.Component{
@@ -33,14 +35,16 @@ class App extends React.Component{
       }
     );
     return (
-      <Container className="body">
+      <Container className="body container-fluid">
         <Navegacion NombreTienda="Facherita's Store" />
+        <hr></hr>
         <br></br>
         <Container>
           <Row>
             {ArregloComponentes}          
           </Row>
         </Container>
+        <Footer/>
       </Container>
     );
   }
