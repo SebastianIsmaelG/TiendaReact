@@ -22,7 +22,7 @@
         },
         {
             "codigo":"0003",
-            "titulo": "Parlantes Modernos Kioto® e5",
+            "titulo": "Parlantes Modernos Kioto e5",
             "categoria": "perifericos",
             "precio": "25990",
             "marca": "Kioto®",
@@ -42,7 +42,7 @@
         },
         {
             "codigo": "0005",
-            "titulo": "Microfono Vintage 55SH Series Shure®",
+            "titulo": "Microfono Vintage 55SH Series Shure",
             "categoria": "perifericos",
             "precio": "12590",
             "marca": "Shure®",
@@ -52,7 +52,7 @@
         },
         {
             "codigo": "0006",
-            "titulo": "Audifonos Headset Razer® Kraken Oval",
+            "titulo": "Audifonos Headset Razer Kraken Oval",
             "categoria": "audifonos",
             "precio": "59990",
             "marca": "Razer®",
@@ -62,7 +62,7 @@
         },
         {
             "codigo": "0007",
-            "titulo": "Pendrive Movos® 16gb",
+            "titulo": "Pendrive Movos 16gb",
             "categoria": "pendrive",
             "precio": "4990",
             "marca": "Movos®",

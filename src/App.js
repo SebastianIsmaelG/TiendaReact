@@ -6,12 +6,10 @@ import {listaProductos} from './componentes/listaproducto.json';
 import Footer from './componentes/footer.js';
 
 
-
 class App extends React.Component{
 
   constructor(){
     super();
-
     this.state = {
       listaProductos
     };

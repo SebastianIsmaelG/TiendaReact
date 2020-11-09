@@ -48,7 +48,7 @@ class FichaProducto extends React.Component{
         const badgecarro = document.getElementById("badge1")
         badgecarro.innerText = listaCarrito.length;
         
-        localStorage.setItem( "carrito", JSON.stringify(listaCarrito));
+        localStorage.setItem( "carrito_storage", JSON.stringify(listaCarrito));
         //Objeto console.log(listaCarrito);
       
     }
