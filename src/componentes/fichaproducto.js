@@ -5,7 +5,6 @@ import {listaCarrito} from './listacarro.json';
 
 
 
-
 class FichaProducto extends React.Component{
     constructor(props){
         super();
@@ -26,6 +25,7 @@ class FichaProducto extends React.Component{
         }));
         
     }
+
     agregarCarrito(){
         listaCarrito.push({
             "titulo": this.props.props.titulo,

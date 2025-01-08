@@ -11,8 +11,6 @@ class Carro extends React.Component{
             listaCarrito
             
             
-
-            
         };
         this.toggle = this.toggle.bind(this);
 
