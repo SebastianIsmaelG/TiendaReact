@@ -4,7 +4,7 @@
 
 .cardfoto{
     height: 200px;
-    width: auto;
+    /*width: auto; */
     object-fit: cover;
 }
 .logo{
