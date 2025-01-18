@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import { CarroDeCompras } from "../CarroDeCompras/CarroDeCompras.jsx";
 import "../Producto/Producto.css"; //cambiarrr
-import "../Navbar/Navibar.css";
+import "../Navbar/NaviBar.css";
 export const NaviBar = () => {
   return (
     <Navbar color="light" className="navbar navbar-expand-md">
