@@ -9,7 +9,7 @@ export const CarroDeCompras = () => {
   const listaCarrito = CarritoJson.listaCarrito;
   const toggle = () => setPopoverOpen(!popoverOpen);
 
-  const sumaTotal = () => {
+  const sumaTotal = () => { //incorporar la multiplicacion por x cantidad de producto
     let suma = 0;
     listaCarrito.forEach((item) =>{
       suma += parseInt(item.precio,10);
@@ -18,7 +18,7 @@ export const CarroDeCompras = () => {
   }
   const arregloCarrito = listaCarrito.map((item, i) => (
     <tr key={i}>
-      <td>{i + 1}</td>
+      <td>{item.cantidad}</td>
       <td>{item.titulo}</td>
       <td>$ {new Intl.NumberFormat().format(item.precio)}</td>
     </tr>
@@ -33,12 +33,12 @@ export const CarroDeCompras = () => {
       <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
         <PopoverHeader>Carro de compras</PopoverHeader>
         <PopoverBody>
-          <Table>
+          <Table borderless>
             <thead>
               <tr>
-                <th>#</th>
+                <th>Cantidad</th>
                 <th>Producto</th>
-                <th>Precio</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>{arregloCarrito}</tbody>
@@ -48,6 +48,11 @@ export const CarroDeCompras = () => {
                   <strong>Total :</strong>
                 </td>
                 <td>${sumaTotal()}</td>
+              </tr>
+              <tr>
+                <td colSpan="2" >
+                  <button className="btn btn-success">Completar Compra</button>
+                </td>
               </tr>
             </tfoot>
           </Table>

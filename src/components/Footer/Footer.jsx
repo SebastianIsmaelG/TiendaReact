@@ -17,7 +17,7 @@ export const Footer = () => {
                 ></img>
               </div>
               <div className="p-1">
-                <span className="nombre_tienda">Facherita's Store</span>
+                <span className="nombre_tienda">Nombre Tienda</span>
               </div>
               <div className="p-1">
                 <button className="btn_contactame" value="contacto">

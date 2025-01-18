@@ -16,7 +16,9 @@ export const FichaProducto = ({stock , titulo, precio, codigo, marca, imagen, de
   const toggle = () => setModal(!modal);
 
   const agregarCarrito = () => {
-    listaCarrito.push({ titulo, precio });
+    const cantidad = document.getElementById("id_cantidad_producto").value;
+    console.log(cantidad)
+    listaCarrito.push({ titulo, cantidad, precio });
 
     if (currentStock > 0) {
       setCurrentStock((prevStock) => prevStock - 1);
