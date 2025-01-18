@@ -2,3 +2,8 @@
     margin-left: auto; /* Empuja el elemento hacia la derecha */
     padding-left: 15px; /* Espaciado opcional entre el carrito y los demás */
 }
+.nav_link{
+    font-size: large;
+    font-weight: 600;
+}
+

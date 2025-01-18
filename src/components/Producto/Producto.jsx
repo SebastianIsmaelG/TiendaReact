@@ -6,6 +6,7 @@ import {FichaProducto} from '../FichaProducto/FichaProducto.jsx';
 
 export const Producto = ({marca, titulo, imagen, precio, stock, codigo, descripcion}) =>{
     return(
+        
         <Col lg="3" md="6" sm="6" xs="12">
             <div>
                 <Card>
@@ -23,10 +24,10 @@ export const Producto = ({marca, titulo, imagen, precio, stock, codigo, descripc
                         </div>
                         <div className="my-2 mx-2">
                             <FichaProducto
-                                stock={stock}
+                                stock={Number(stock)}
                                 titulo={titulo}
-                                precio={precio}
-                                codigo={codigo}
+                                precio={Number(precio)}
+                                codigo={Number(codigo)}
                                 marca={marca}
                                 imagen={imagen}
                                 descripcion={descripcion}
@@ -41,11 +42,11 @@ export const Producto = ({marca, titulo, imagen, precio, stock, codigo, descripc
 }
 Producto.propTypes = {
   stock: PropTypes.number.isRequired,
-  titulo: PropTypes.string.isRequired,
-  precio: PropTypes.number.isRequired,
-  codigo: PropTypes.string.isRequired,
-  marca: PropTypes.string.isRequired,
-  imagen: PropTypes.string.isRequired,
+  titulo: PropTypes.string,
+  precio: PropTypes.number,
+  codigo: PropTypes.number,
+  marca: PropTypes.string,
+  imagen: PropTypes.string,
   descripcion: PropTypes.string,
 };
 

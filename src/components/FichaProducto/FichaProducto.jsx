@@ -7,8 +7,8 @@ import ProductosJson from "../../json/listaproducto.json";
 import imgmediosdepago from "../../img/medios_pago2016.png";
 
 
-export const FichaProducto = ({stock , titulo, precio, codigo, marca, imagen, descripcion}) => {
-
+export const FichaProducto = ({stock, titulo, precio, codigo, marca, imagen, descripcion}) => {
+  
   const [modal, setModal] = useState(false);
   const [currentStock, setCurrentStock] = useState(stock);
   const { listaCarrito } = CarritoJson;
@@ -17,11 +17,11 @@ export const FichaProducto = ({stock , titulo, precio, codigo, marca, imagen, de
 
   const agregarCarrito = () => {
     const cantidad = document.getElementById("id_cantidad_producto").value;
-    console.log(cantidad)
+    
     listaCarrito.push({ titulo, cantidad, precio });
 
     if (currentStock > 0) {
-      setCurrentStock((prevStock) => prevStock - 1);
+      setCurrentStock((prevStock) => prevStock - cantidad);
       localStorage.setItem('carrito_storage', JSON.stringify(listaCarrito));
       const badgecarro = document.getElementById('badge1');
       if (badgecarro) badgecarro.innerText = listaCarrito.length;
@@ -126,12 +126,12 @@ export const FichaProducto = ({stock , titulo, precio, codigo, marca, imagen, de
 };
 
 FichaProducto.propTypes = {
-  stock: PropTypes.number.isRequired,
-  titulo: PropTypes.string.isRequired,
-  precio: PropTypes.number.isRequired,
-  codigo: PropTypes.string.isRequired,
-  marca: PropTypes.string.isRequired,
-  imagen: PropTypes.string.isRequired,
+  stock: PropTypes.number,
+  titulo: PropTypes.string,
+  precio: PropTypes.number,
+  codigo: PropTypes.number,
+  marca: PropTypes.string,
+  imagen: PropTypes.string,
   descripcion: PropTypes.string,
 };
 

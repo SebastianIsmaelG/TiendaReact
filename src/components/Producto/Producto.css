@@ -60,35 +60,4 @@
     outline: none;
     border-radius: 3mm;
 }
-.nav_link{
-    font-size: large;
-    font-weight: 600;
-}
-.btn_contactame{
-    color: blanchedalmond;
-    background-color: #51BBA8;
-    border-radius: 3mm;
-    padding: 10px;
-	border: none;
-	font-size: 3.5mm;
-    cursor: pointer;
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: 600;
-}
-.btn_contactame:hover{
-    transition: background-color 0.5s ease;
-    outline: none;
-    border-radius: 3mm;
-    background-color: #2c927f;
-}
-.ul_none{
-    list-style-type: none;
-}
-.noto_sans{
-    font-family: 'Noto Sans', sans-serif;
-}
-.corazon{
-    color: red;
-    font-size: medium;
 
-}

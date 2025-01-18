@@ -40,7 +40,7 @@ export const NaviBar = () => {
             </NavLink>
           </NavItem>
           <NavItem className="ml-auto nav_carro">
-            <CarroDeCompras />
+            <CarroDeCompras placement="bottom"/>
           </NavItem>
         </Nav>
       </Collapse>
