@@ -7,7 +7,7 @@ import {
   Collapse,
   NavbarToggler,
 } from "reactstrap";
-import { CarroDeCompras } from "../CarroDeCompras/CarroDeCompras.jsx";
+import CarroDeCompras from '../CarroDeCompras/CarroDeCompras'; //todo el componente
 import "../Producto/Producto.css"; //cambiarrr
 import "../Navbar/NaviBar.css";
 export const NaviBar = () => {

@@ -1,15 +1,30 @@
 import {Badge,Button,Popover,PopoverBody,PopoverHeader,Table,} from "reactstrap";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "../CarroDeCompras/CarroDeCompras.css";
-import { useState } from "react";
-import CarritoJson from "../../json/listacarro.json";
+import { useState, useEffect } from "react";
+import CarritoJson from "../../json/listaproducto.json"; 
 
-export const CarroDeCompras = () => {
-  
-  const [popoverOpen,setPopoverOpen] = useState(false);
+const CarroDeCompras = () => {
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [placement, setPlacement] = useState("bottom");
-  const listaCarrito = CarritoJson.listaCarrito || [];
+  const [listaCarrito, setListaCarrito] = useState([]);
+
   const toggle = () => setPopoverOpen(!popoverOpen);
+
+  useEffect(() => {
+    // Cargar los datos del localStorage o inicializar con los productos de CarritoJson
+    const carritoStorage = JSON.parse(localStorage.getItem("carrito_storage") || "[]");
+    CarritoJson.listaProductos; // Cambiado aquí
+    
+
+    // Guardar los datos en localStorage si no existen
+    if (!localStorage.getItem("carrito_storage")) {
+      localStorage.setItem("carrito_storage", JSON.stringify(carritoStorage));
+    }
+
+    // Actualizar el estado del carrito
+    setListaCarrito(carritoStorage);
+  }, []);
 
   const sumaTotal = () => {
     return listaCarrito.reduce((total, item) => {
@@ -18,6 +33,7 @@ export const CarroDeCompras = () => {
       return total + precio * cantidad;
     }, 0);
   };
+
   const arregloCarrito = listaCarrito.map((item, i) => (
     <tr key={i}>
       <td>{item.cantidad}</td>
@@ -25,25 +41,31 @@ export const CarroDeCompras = () => {
       <td>$ {new Intl.NumberFormat().format(item.precio)}</td>
     </tr>
   ));
-  //Popover Warning
-  const MyPopover = ({ placement = 'bottom', ...props }) => {
+
+
+  // Componente para el Popover con validación de props
+  const MyPopover = ({ placement = "bottom", ...props }) => {
     return (
-      <Popover placement={placement} {...props} />
+      <Popover placement={placement} {...props} transition={{ timeout: 150 }} />
     );
   };
 
-  // Validación de las props de MyPopover
   MyPopover.propTypes = {
-    placement: PropTypes.string, // Asegura que 'placement' sea de tipo string
+    placement: PropTypes.string, 
   };
 
   return (
     <div>
-      <Button id="Popover1">
+      <Button id="myPopover">
         <span className="material-icons">shopping_cart</span>
         <Badge id="badge1">{listaCarrito.length}</Badge>
       </Button>
-      <MyPopover placement={placement} isOpen={popoverOpen} target="Popover1" toggle={toggle}>
+      <MyPopover
+        placement={placement}
+        isOpen={popoverOpen}
+        target="myPopover"
+        toggle={toggle}
+      >
         <PopoverHeader>Carro de compras</PopoverHeader>
         <PopoverBody>
           <Table borderless>
@@ -63,8 +85,8 @@ export const CarroDeCompras = () => {
                 <td>${sumaTotal()}</td>
               </tr>
               <tr>
-                <td colSpan={2} >
-                  <button className="btnCompra">Completar Compra</button>
+                <td colSpan={2}>
+                  <button className={`btnCompra ${ listaCarrito.length === 0 ? "disabled" : "enabled"}`} disabled={listaCarrito.length === 0}> Completar Compra </button>
                 </td>
               </tr>
             </tfoot>
@@ -74,3 +96,4 @@ export const CarroDeCompras = () => {
     </div>
   );
 };
+export default CarroDeCompras;

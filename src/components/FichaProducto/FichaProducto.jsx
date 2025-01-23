@@ -1,45 +1,52 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types'; // Importa PropTypes
+import PropTypes from 'prop-types'; 
 import { Modal, Button, Container, ModalBody, Col, Row } from "reactstrap";
-import "../Producto/Producto.css"; // TENGO QUE CREAR OTRO CSS PARA ESTE LADO
-import CarritoJson from "../../json/listacarro.json";
-import ProductosJson from "../../json/listaproducto.json";
+import "../FichaProducto/FichaProducto.css";
+import CarritoJson from "../../json/listaproducto.json";
 import imgmediosdepago from "../../img/medios_pago2016.png";
+import CarroDeCompras from '../CarroDeCompras/CarroDeCompras'; //todo el componente
 
-
-export const FichaProducto = ({stock, titulo, precio, codigo, marca, imagen, descripcion}) => {
-  
+export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, descripcion }) => {
   const [modal, setModal] = useState(false);
   const [currentStock, setCurrentStock] = useState(stock);
-  const { listaCarrito } = CarritoJson;
 
   const toggle = () => setModal(!modal);
 
   const agregarCarrito = () => {
-    const cantidad = document.getElementById("id_cantidad_producto").value;
+    // Traemos los datos de local storage o inicializamos con el JSON
+    const carritoStorage = JSON.parse(localStorage.getItem('carrito_storage')) || CarritoJson.listaProductos;
     
-    listaCarrito.push({ titulo, cantidad, precio });
+    const cantidad = parseInt(document.getElementById("id_cantidad_producto").value, 10);
+    // Verificamos si el producto ya está en el carrito
+    const productoExistente = carritoStorage.find(item => item.codigo === codigo);
 
-    if (currentStock > 0) {
-      setCurrentStock((prevStock) => prevStock - cantidad);
-      localStorage.setItem('carrito_storage', JSON.stringify(listaCarrito));
-      const badgecarro = document.getElementById('badge1');
-      if (badgecarro) badgecarro.innerText = listaCarrito.length;
+    if (productoExistente) {
+      
+      productoExistente.cantidad += cantidad;
     } else {
-      alert('Stock Agotado');
+      
+      carritoStorage.push({ codigo, titulo, cantidad, precio });
     }
-
-    toggle();
+    // Guardar el carrito actualizado en el localStorage
+    localStorage.setItem('carrito_storage', JSON.stringify(carritoStorage));
+    
+    // Actualizamos el stock disponible
+    if (currentStock >= cantidad) {
+      setCurrentStock((prevStock) => prevStock - cantidad);
+    } else {
+      alert('Stock insuficiente');
+    }
+    toggle(); 
+    //actualizar el contenido del carro de compras cuando se cierra el modal
   };
 
-
-  const Mediosdepago = () => <img src={imgmediosdepago} alt="Medios de Pago"/>
+  const Mediosdepago = () => <img src={imgmediosdepago} alt="Medios de Pago" />;
 
   return (
     <Container>
       <div className="buttondiv">
         <button className="btnficha" onClick={toggle}>
-          Ver Mas
+          Ver Más
         </button>
       </div>
       <Modal isOpen={modal}>
@@ -62,7 +69,7 @@ export const FichaProducto = ({stock, titulo, precio, codigo, marca, imagen, des
                 </Container>
               </Col>
             </Row>
-            <br></br>
+            <br />
             <Row>
               <Col lg="6" md="6" sm="12" xs="12">
                 <img
@@ -96,7 +103,9 @@ export const FichaProducto = ({stock, titulo, precio, codigo, marca, imagen, des
                         </select>
                       </div>
                       <div className="p-1 m-1 text-center">
-                      <button className="btnficha" onClick={agregarCarrito}> Agregar al Carro </button>
+                        <button className="btnficha" onClick={agregarCarrito}>
+                          Agregar al Carro
+                        </button>
                       </div>
                     </Col>
                   </Row>
@@ -122,7 +131,7 @@ export const FichaProducto = ({stock, titulo, precio, codigo, marca, imagen, des
         </ModalBody>
       </Modal>
     </Container>
-  )
+  );
 };
 
 FichaProducto.propTypes = {
@@ -134,4 +143,3 @@ FichaProducto.propTypes = {
   imagen: PropTypes.string,
   descripcion: PropTypes.string,
 };
-

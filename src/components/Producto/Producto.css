@@ -12,15 +12,6 @@
     margin-left: 8px;
     margin-right: 8px;
 }
-.img_descripcion{
-    height: 200px;
-    width: auto;
-    object-fit: cover;
-}
-
-.buttondiv{
-    text-align: center;
-}
 .titulo_articulo{
     height: 100px;
     max-height: 80px;
@@ -38,26 +29,5 @@
     color: #666666;
 }
 
-.btnficha{
-    color: blanchedalmond;
-    border-radius: 3mm;
-    padding: 10px;
-    background-color: chocolate;
-	border: none;
-	font-size: 3.5mm;
-    cursor: pointer;
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: 600;
-    
-}
-.btnficha:hover{
-    transition: background-color 0.5s ease;
-    outline: none;
-    border-radius: 3mm;
-    background-color: rgb(233, 128, 53);
-}
-.btnficha:focus{
-    outline: none;
-    border-radius: 3mm;
-}
+
 
