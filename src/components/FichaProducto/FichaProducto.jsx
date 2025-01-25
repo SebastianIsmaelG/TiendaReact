@@ -1,59 +1,34 @@
-import { useEffect,useState } from 'react';
-import PropTypes from 'prop-types'; 
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { Modal, Button, Container, ModalBody, Col, Row } from "reactstrap";
 import "../FichaProducto/FichaProducto.css";
-import imgmediosdepago from "../../img/medios_pago2016.png";
-import {CarroDeCompras} from "../CarroDeCompras/CarroDeCompras.jsx";
+import { useCarrito } from "../../context/CarritoContext.jsx";
 
 export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, descripcion }) => {
   const [modal, setModal] = useState(false);
   const [currentStock, setCurrentStock] = useState(stock);
+  const { agregarAlCarrito } = useCarrito(); // Usar el contexto
 
   const toggle = () => setModal(!modal);
 
   const AgregarCarrito = () => {
-    
-    // Traemos los datos de local storage o inicializamos con el JSON
-    const carritoStorage = JSON.parse(localStorage.getItem('carrito_storage')|| "[]");
-    
     const cantidad = parseInt(document.getElementById("id_cantidad_producto").value, 10);
-    // Verificamos si el producto ya está en el carrito
-    const productoExistente = carritoStorage.find(item => item.codigo === codigo);
-
-    if (productoExistente) {
-      
-      productoExistente.cantidad += cantidad;
-    } else {
-      
-      carritoStorage.push({ codigo, titulo, cantidad, precio });
-    }
-    // Guardar el carrito actualizado en el localStorage
-    localStorage.setItem('carrito_storage', JSON.stringify(carritoStorage));
     
-    // Actualizamos el stock disponible
-    if (currentStock >= cantidad) {
-      setCurrentStock((prevStock) => prevStock - cantidad);
-    } else {
-      alert('Stock insuficiente');
+    if (cantidad > currentStock) {
+      alert("Stock insuficiente");
+      return;
     }
-    toggle(); 
-    //actualizar el contenido del carro de compras cuando se cierra el modal
-    // Ejecuta la función importada cuando se renderiza el componente
-    useEffect(() => {
-      CarroDeCompras();
-    }, []); // [] asegura que solo se ejecute al montar el componente
 
-    };
+    const producto = { codigo, titulo, cantidad, precio };
+    agregarAlCarrito(producto); // Llamar a la función del contexto
 
-  const Mediosdepago = () => <img src={imgmediosdepago} alt="Medios de Pago" />;
+    setCurrentStock((prevStock) => prevStock - cantidad);
+    toggle();
+  };
 
   return (
     <Container>
-      <div className="buttondiv">
-        <button className="btnficha" onClick={toggle}>
-          Ver Más
-        </button>
-      </div>
+      <button className="btnficha" onClick={toggle}>Ver Más</button>
       <Modal isOpen={modal}>
         <ModalBody>
           <Container>
@@ -117,7 +92,7 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
                 </Container>
               </Col>
               <Col lg="6" md="6" sm="6" xs="6">
-                <div className="p-1 m-1 text-right">{Mediosdepago()}</div>
+                <div className="p-1 m-1 text-right">foto</div>
               </Col>
               <Col lg="6" md="6" sm="6" xs="6">
                 <div className="m-2 text-center">
