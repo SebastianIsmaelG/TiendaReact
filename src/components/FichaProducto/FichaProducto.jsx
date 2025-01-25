@@ -2,9 +2,8 @@ import { useState } from 'react';
 import PropTypes from 'prop-types'; 
 import { Modal, Button, Container, ModalBody, Col, Row } from "reactstrap";
 import "../FichaProducto/FichaProducto.css";
-import CarritoJson from "../../json/listaproducto.json";
 import imgmediosdepago from "../../img/medios_pago2016.png";
-import CarroDeCompras from '../CarroDeCompras/CarroDeCompras'; //todo el componente
+
 
 export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, descripcion }) => {
   const [modal, setModal] = useState(false);
@@ -13,8 +12,9 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
   const toggle = () => setModal(!modal);
 
   const agregarCarrito = () => {
+    
     // Traemos los datos de local storage o inicializamos con el JSON
-    const carritoStorage = JSON.parse(localStorage.getItem('carrito_storage')) || CarritoJson.listaProductos;
+    const carritoStorage = JSON.parse(localStorage.getItem('carrito_storage')|| "[]");
     
     const cantidad = parseInt(document.getElementById("id_cantidad_producto").value, 10);
     // Verificamos si el producto ya está en el carrito
