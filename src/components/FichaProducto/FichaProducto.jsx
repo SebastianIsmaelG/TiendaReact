@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import PropTypes from 'prop-types'; 
 import { Modal, Button, Container, ModalBody, Col, Row } from "reactstrap";
 import "../FichaProducto/FichaProducto.css";
 import imgmediosdepago from "../../img/medios_pago2016.png";
-
+import {CarroDeCompras} from "../CarroDeCompras/CarroDeCompras.jsx";
 
 export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, descripcion }) => {
   const [modal, setModal] = useState(false);
@@ -11,7 +11,7 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
 
   const toggle = () => setModal(!modal);
 
-  const agregarCarrito = () => {
+  const AgregarCarrito = () => {
     
     // Traemos los datos de local storage o inicializamos con el JSON
     const carritoStorage = JSON.parse(localStorage.getItem('carrito_storage')|| "[]");
@@ -38,7 +38,12 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
     }
     toggle(); 
     //actualizar el contenido del carro de compras cuando se cierra el modal
-  };
+    // Ejecuta la función importada cuando se renderiza el componente
+    useEffect(() => {
+      CarroDeCompras();
+    }, []); // [] asegura que solo se ejecute al montar el componente
+
+    };
 
   const Mediosdepago = () => <img src={imgmediosdepago} alt="Medios de Pago" />;
 
@@ -103,7 +108,7 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
                         </select>
                       </div>
                       <div className="p-1 m-1 text-center">
-                        <button className="btnficha" onClick={agregarCarrito}>
+                        <button className="btnficha" onClick={AgregarCarrito}>
                           Agregar al Carro
                         </button>
                       </div>

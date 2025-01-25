@@ -4,7 +4,7 @@ import "../CarroDeCompras/CarroDeCompras.css";
 import { useState, useEffect } from "react";
 //import CarritoJson from "../../json/listaproducto.json"; No lo necesito po si trabajo los datos del localstorage
 
-const CarroDeCompras = () => {
+export const CarroDeCompras = () => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [placement, setPlacement] = useState("bottom");
   const toggle = () => setPopoverOpen(!popoverOpen);
