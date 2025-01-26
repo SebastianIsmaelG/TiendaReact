@@ -2,9 +2,11 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { Modal, Button, Container, ModalBody, Col, Row } from "reactstrap";
 import "../FichaProducto/FichaProducto.css";
+import imgmediosdepago from "../../img/medios_pago2016.png";
 import { useCarrito } from "../../context/CarritoContext.jsx";
 
 export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, descripcion }) => {
+  const Mediosdepago = () => <img src={imgmediosdepago} alt="Medios de Pago" />;
   const [modal, setModal] = useState(false);
   const [currentStock, setCurrentStock] = useState(stock);
   const { agregarAlCarrito } = useCarrito(); // Usar el contexto
@@ -92,7 +94,7 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
                 </Container>
               </Col>
               <Col lg="6" md="6" sm="6" xs="6">
-                <div className="p-1 m-1 text-right">foto</div>
+                <div className="p-1 m-1 text-right">{Mediosdepago()}</div>
               </Col>
               <Col lg="6" md="6" sm="6" xs="6">
                 <div className="m-2 text-center">

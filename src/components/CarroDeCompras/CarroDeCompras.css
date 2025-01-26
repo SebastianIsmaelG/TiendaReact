@@ -25,3 +25,13 @@
     color: #888;
     cursor: not-allowed;
 }
+.unset {
+    all: unset;
+}
+
+.popover-content {
+    max-width: 100%; /* Asegura que el contenido no exceda el ancho del Popover */
+}
+.popover {
+    --bs-popover-max-width: none; /* Elimina la restricción de ancho */
+}   

@@ -1,15 +1,7 @@
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Collapse,
-  NavbarToggler,
-} from "reactstrap";
+import {Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler,} from "reactstrap";
 import CarroDeCompras from '../CarroDeCompras/CarroDeCompras'; //todo el componente
-import "../Producto/Producto.css"; //cambiarrr
 import "../Navbar/NaviBar.css";
+
 export const NaviBar = () => {
   return (
     <Navbar color="light" className="navbar navbar-expand-md">

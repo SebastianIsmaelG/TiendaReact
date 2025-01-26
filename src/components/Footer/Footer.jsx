@@ -54,7 +54,7 @@ export const Footer = () => {
             </div>
           </Col>
           <Col lg="4" md="6" sm="6" xs="12">
-            <div className="p-2 text-center">
+            <div className="p-2">
               <h5 className="noto_sans">REDES SOCIALES</h5>
               <ul className="text-decoration-none ul_none text-center m-1 list-inline ">
                 <li className="list-inline-item">
