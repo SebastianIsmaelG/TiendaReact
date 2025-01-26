@@ -5,15 +5,16 @@ const CarritoContext = createContext();
 
 export const useCarrito = () => useContext(CarritoContext);
 
-// Proveedor del contexto
 export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState(() => {
     return JSON.parse(localStorage.getItem("carrito_storage") || "[]");
   });
 
-  // Función para agregar productos al carrito
+  
   const agregarAlCarrito = (producto) => {
+    
     const carritoActualizado = [...carrito];
+
     const productoExistente = carritoActualizado.find(
       (item) => item.codigo === producto.codigo
     );

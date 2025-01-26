@@ -7,8 +7,7 @@
 	font-size: 3.5mm;
     cursor: pointer;
     font-family: 'Noto Sans', sans-serif;
-    font-weight: 600;
-    
+    font-weight: 600;  
 }
 .btnCompra:hover{
     transition: background-color 0.5s ease;
@@ -30,8 +29,8 @@
 }
 
 .popover-content {
-    max-width: 100%; /* Asegura que el contenido no exceda el ancho del Popover */
+    max-width: 100%; 
 }
 .popover {
-    --bs-popover-max-width: none; /* Elimina la restricción de ancho */
+   --bs-popover-max-width: none; 
 }   

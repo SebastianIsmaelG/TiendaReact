@@ -1,12 +1,11 @@
 import{Container,CardSubtitle,CardTitle,Card,Col,CardImg,CardBody} from 'reactstrap';
-import PropTypes from 'prop-types'; // Importa PropTypes
+import PropTypes from 'prop-types';
 import '../Producto/Producto.css';
 import {FichaProducto} from '../FichaProducto/FichaProducto.jsx';
 
 
 export const Producto = ({marca, titulo, imagen, precio, stock, codigo, descripcion}) =>{
     return(
-        
         <Col lg="3" md="6" sm="6" xs="12">
             <div>
                 <Card>
