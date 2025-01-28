@@ -19,6 +19,9 @@ export const CarroDeCompras = () => {
     placement: PropTypes.string, 
   };
 
+  const eliminarProducto = (codigo) =>{
+    console.log("Código del producto a eliminar:", codigo);
+  }
   //Obtiene el carro desde CarritoContext y lo generamos
   const { carrito } = useCarrito();
   const tablaCarrito = carrito.map((item, i) => (
@@ -26,7 +29,7 @@ export const CarroDeCompras = () => {
       <td className="">{item.cantidad}</td>
       <td className="">{item.titulo}</td>
       <td className=""><span className="me-2">$</span>{item.precio.toLocaleString('es-CL')}</td>
-      <td className=""><button className="unset"><span className="material-icons">delete</span></button></td>
+      <td className=""><button className="unset" onClick={() => eliminarProducto(item.codigo)}><span className="material-icons">delete</span></button></td>
     </tr>
   ));
   const sumaTotal = () => {
@@ -36,7 +39,6 @@ export const CarroDeCompras = () => {
       return total + precio * cantidad;
     }, 0);
   };
-
 
   return (
     <div>

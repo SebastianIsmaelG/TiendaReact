@@ -28,9 +28,8 @@ function App() {
 
   return (
     <Container className="body container-fluid">
-      <NaviBar NombreTienda="Facherita's Store" />
+      <NaviBar NombreTienda="Nombre Tienda" />
       <hr></hr>
-      <br></br>
       <Container>
         <Row>{ArregloComponentes}</Row>
       </Container>
