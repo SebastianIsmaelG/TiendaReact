@@ -1,6 +1,12 @@
 .nav_carro {
+<<<<<<< HEAD
     margin-left: auto; 
     padding-left: 15px; 
+=======
+    margin-left: auto; /* Empuja el elemento hacia la derecha */
+    padding-left: 15px; /* Espaciado opcional entre el carrito y los demás */
+    list-style: none;
+>>>>>>> test
 }
 .nav_link{
     font-size: large;
