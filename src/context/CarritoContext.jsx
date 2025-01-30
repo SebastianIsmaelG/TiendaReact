@@ -29,8 +29,15 @@ export const CarritoProvider = ({ children }) => {
     localStorage.setItem("carrito_storage", JSON.stringify(carritoActualizado));
   };
 
+  const eliminarDelCarrito = (codigo) => {
+    const carritoActualizado = carrito.filter((item) => item.codigo !== codigo);
+  
+    setCarrito(carritoActualizado);
+    localStorage.setItem("carrito_storage", JSON.stringify(carritoActualizado));
+  };
+
   return (
-    <CarritoContext.Provider value={{ carrito, agregarAlCarrito }}>
+    <CarritoContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito }}>
       {children}
     </CarritoContext.Provider>
   );

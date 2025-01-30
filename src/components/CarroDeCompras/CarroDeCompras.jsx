@@ -18,9 +18,10 @@ export const CarroDeCompras = () => {
   MyPopover.propTypes = {
     placement: PropTypes.string, 
   };
-
+  const { eliminarDelCarrito } = useCarrito(); // Usar el contexto
+  
   const eliminarProducto = (codigo) =>{
-    console.log("Código del producto a eliminar:", codigo);
+    eliminarDelCarrito(codigo)
   }
   //Obtiene el carro desde CarritoContext y lo generamos
   const { carrito } = useCarrito();
