@@ -8,6 +8,7 @@ import { Producto } from "./components/Producto/Producto.jsx";
 import { Footer } from "./components/Footer/Footer.jsx";
 
 
+
 function App() {
   const { listaProductos } = ProductosJson;
   const ArregloComponentes = listaProductos.map((producto, i) => { 
