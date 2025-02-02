@@ -6,24 +6,21 @@ import imgmediosdepago from "../../img/medios_pago2016.png";
 import { useCarrito } from "../../context/CarritoContext.jsx";
 
 export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, descripcion }) => {
+
   const Mediosdepago = () => <img src={imgmediosdepago} alt="Medios de Pago" />;
   const [modal, setModal] = useState(false);
   const [currentStock, setCurrentStock] = useState(stock);
   const { agregarAlCarrito } = useCarrito(); // Usar el contexto
-
   const toggle = () => setModal(!modal);
 
   const AgregarCarrito = () => {
     const cantidad = parseInt(document.getElementById("id_cantidad_producto").value, 10);
-    
     if (cantidad > currentStock) {
       alert("Stock insuficiente");
       return;
     }
-
     const producto = { codigo, titulo, cantidad, precio };
     agregarAlCarrito(producto); // Llamar a la función del contexto
-
     setCurrentStock((prevStock) => prevStock - cantidad);
     toggle();
   };
@@ -54,11 +51,7 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
             <br />
             <Row>
               <Col lg="6" md="6" sm="12" xs="12">
-                <img
-                  alt="imagen-articulo"
-                  className="img_descripcion img-fluid"
-                  src={imagen}
-                ></img>
+                <img alt="imagen-articulo" className="img_descripcion img-fluid" src={imagen}></img>
               </Col>
               <Col lg="6" md="6" sm="12" xs="12">
                 <Container>
@@ -85,9 +78,7 @@ export const FichaProducto = ({ stock, titulo, precio, codigo, marca, imagen, de
                         </select>
                       </div>
                       <div className="p-1 m-1 text-center">
-                        <button className="btnficha" onClick={AgregarCarrito}>
-                          Agregar al Carro
-                        </button>
+                        <button className="btnficha" onClick={AgregarCarrito}>Agregar al Carro </button>
                       </div>
                     </Col>
                   </Row>

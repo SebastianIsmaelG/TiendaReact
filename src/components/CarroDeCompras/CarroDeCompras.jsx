@@ -8,18 +8,18 @@ export const CarroDeCompras = () => {
   //Modal Carro de Compras
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [placement, setPlacement] = useState("bottom");
+  //popover placement
   const toggle = () => setPopoverOpen(!popoverOpen);
   const MyPopover = ({ placement = "bottom", ...props }) => {
     return (
       <Popover placement={placement} {...props}/>
     );
   };
-
   MyPopover.propTypes = {
     placement: PropTypes.string, 
   };
-  const { eliminarDelCarrito } = useCarrito(); // Usar el contexto
-  
+  //obtiene el contexto del carrito
+  const { eliminarDelCarrito } = useCarrito();
   const eliminarProducto = (codigo) =>{
     eliminarDelCarrito(codigo)
   }
